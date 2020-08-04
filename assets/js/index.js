@@ -4,9 +4,9 @@ $(function(){
     var layer=layui.layer
 
     $('#btnLogout').on('click',function(){
-        layer.confirm('确定退出登录？',{icon:3,title:'提示'},function(index){
+        layer.confirm('确定退出登录?',{ icon: 3,title:'提示'},function(index){
             localStorage.removeItem('token')
-            location.href='/login.html'
+            location.href='/大事件项目/第一遍/login.html'
             layer.close(index)
         })
     })
@@ -14,7 +14,10 @@ $(function(){
 function getUserInfo(){
     $.ajax({
         method:'GET',
-        url:'http://ajax.frontend.itheima.net/my/userinfo',
+        url:'/my/userinfo',
+        headers:{
+            Authorization:localStorage.getItem('token')||''
+        },
         success:function(res){
             if(res.status!==0){
                 return layui.layer.msg('获取用户信息失败！')

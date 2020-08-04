@@ -60,6 +60,7 @@ $(function() {
             layer.msg('登录成功')
             localStorage.setItem('token',res.token)
             location.href='/大事件项目/第一遍/index.html'
+            
           }
       })
   })
